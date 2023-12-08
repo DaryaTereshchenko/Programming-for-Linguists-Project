@@ -204,7 +204,7 @@ def main():
     # remove the headers and footers
     clean_text = strip_headers(text)
     # save the book without headers and footers
-    with open(os.path.join(book_title, f"{book_title}.txt"), "w") as f:
+    with open(os.path.join(book_title, f"{book_title}_clean.txt"), "w") as f:
         f.write(clean_text)
     # split the book into chapters
     chapters = split_book_by_chapter(clean_text)
