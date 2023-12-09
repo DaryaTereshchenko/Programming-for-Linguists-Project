@@ -90,7 +90,7 @@ SENT_WILDE = ["love",
 "painful"]
 SENT_WILDE = [x.lower() for x in SENT_WILDE]
 
-def count_words(text, words):
+def count_words(text:list, words:list)->dict:
     """
     Counts the number of times each word appears in the text
     :param text: list of words
@@ -109,7 +109,7 @@ def count_words(text, words):
 
     return words_count_per_text
 
-def read_files(directory):
+def read_files(directory)->dict:
     """
     Reads all the files in the directory and counts the number of times each word appears in each text
     :param directory: directory with the texts
@@ -130,7 +130,7 @@ def read_files(directory):
 
     return {key: texts_vocab[key] for key in sorted(texts_vocab)}
 
-def json_conversion(data, words, count_words=count_words):
+def json_conversion(data:dict, words:list, count_words=count_words)->dict:
     """
     Convert the data to separate JSON strings for each chapter.
     """
@@ -174,21 +174,29 @@ def write_as_json(data, file_path, chapters_path):
 
 
 def main():
-    # Here you may add the neccessary code to call your functions, and all the steps before, in between, and after calling them.
+    """
+    Main function.
+    """
+    # Dictionary with the words to count for each book (NER)
     words_list_ner = {'Importance_of_being_earnest': NER_WILDE,
                       'Alice_in_wonderland': NER_CARROLL,
                       'Much_ado_about_nothing': NER_SHAKESPEAR}
 
+    # Dictionary with the words to count for each book (Sentiment)
     words_list_sentiment = {'Importance_of_being_earnest': SENT_WILDE,
                             'Alice_in_wonderland': SENT_CARROL,
                             'Much_ado_about_nothing': SENT_SHAKESPEAR}
+    # Check if the number of arguments is correct
     if len(sys.argv) != 4:
         print("Usage: python3 part0.py ner_or_sentiment <path_to_the_book> <path_to_the_chapters>")
         sys.exit(1)
-
+    # Get the book path
     book_path = sys.argv[2]
+    # get the book title
     book_title = os.path.splitext(os.path.basename(book_path))[0]
+    # Get the chapters path
     chapters_path = sys.argv[3]
+    # Define which words to count
     ner_or_sentiment = sys.argv[1]
 
     if "ner" in ner_or_sentiment:
@@ -196,9 +204,11 @@ def main():
 
     elif "sentiment" in ner_or_sentiment:
         words = words_list_sentiment[book_title]
-
+    # Read the files
     file = read_files(chapters_path)
+    # Convert the data to JSON
     json_converted_file = json_conversion(file, words=words)
+    # Write the data to a JSON file
     write_as_json(json_converted_file, book_path, chapters_path)
 
 # This is the standard boilerplate that calls the main() function when the program is executed.
