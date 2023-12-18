@@ -204,6 +204,7 @@ def main():
 
     elif "sentiment" in ner_or_sentiment:
         words = words_list_sentiment[book_title]
+        
     # Read the files
     file = read_files(chapters_path)
     # Convert the data to JSON
