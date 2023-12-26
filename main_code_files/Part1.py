@@ -1,7 +1,7 @@
 """
 PCL 1 Fall Semester 2023 - Course Project
-Part 0: Book Selection
-Students: <person 1>, <person 2>
+Part 1: Named Entity Recognition using spaCy
+Students: Asher Slater & Daria Stetsenko
 """
 # --- Imports ---
 import os

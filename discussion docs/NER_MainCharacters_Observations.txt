@@ -1,0 +1,15 @@
+Students: Asher Slater & Daria Stetsenko
+
+Part 1: Named Entity Recognition using spaCy
+
+We divided the text into chapters to use only the initial text file with preprocessed text. Each chapter was transformed into the SpaCy doc to extract NER entities. We decided to extract only the first 5 main characters based on their frequency in the text since some outputs of the SpaCy NER were not entities at all. For instance: "chimney?—Nay", "Soo—oop, or "Un_important." To filter these irregular words, we put the threshold that the count of the character's frequency should be greater than 5. 
+
+We expected the main characters to be among those we determined before using the grep function: Alice, White Rabbit, Mad Hatter, Cheshire Cat, Queen of Hearts, King of Hearts, Mock Turtle, Duchess, or Caterpillar. However, we obtained some unexpected main characters in our list, such as Bill and Dormouse. We suspect that Dormouse and Mouse are the same characters, but as the NER extracted them as different, we rely on the obtained result. Hence, the final set of the main characters from the book "Alice in Wonderland" consists of Alice, Hatter, Dormouse, Mouse, and Bill. 
+
+We continued the analysis by extracting the lines per chapter containing mentions of the specific character. 
+
+The most challenging part of the task was clustering analysis. As we did not know whether the sklearn library could be used to calculate the TF-IDF features, we wrote a simple algorithm for the TF-IDF feature extraction. This step was crucial before applying the nltk KMeansClusterer, which we chose for our analysis. The K-mean clustering is practical because it assigns each data point to the cluster whose centroid is nearest to it. It is expected to run the algorithm multiple times with different initializations. In our case, we utilized the parameter "repeats," which was set to 10, with the distance between centroids calculated by cosine similarity instead of the Euclidean distance, and the number of clusters was equal to the number of main characters. 
+
+Ultimately, we did not obtain any aliases for the 5 main characters. Still, to ensure that this simple program can identify at least some of the aliases for other extracted named entities, we ran the algorithm for all 55 characters. All in all, we found out that the character "Tillie" has such aliases as "Elsie," "Lacie," and "Tillie." This is because these names typically stand close to each other in the text. Another example is "Canterbury," whose alias is "Stigand," which is correct.  
+
+In the end, we identified the place of each NER name in the corresponding sentence and restructured the final JSON file according to the example provided in the task. 

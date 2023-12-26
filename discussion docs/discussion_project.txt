@@ -1,0 +1,46 @@
+Students: Asher Slater & Daria Stetsenko
+
+Part 4: Reflection and Discussion
+
+a) Learning and Challenges
+
+- Comparing the results of grep and the more in-depth NLP analysis, what are the key insights?
+
+Answer: The results from grap are not as objective. We create lists with named entities and sentiment words, which might not be as exhaustive and abundant as the ones extracted by SpaCy. Also, conducting simple frequency analysis using spacy and other libraries is more detailed than grep. Moreover, while extracting the context, the obtained sentences are sometimes incomplete when we utilize only the grep command. 
+
+- You were asked to visualize both methods. How do they differ?
+
+Answer: As for the preprocessing step before ploting, the SpaCy JSON files were easier to preprocess and extract the necessary information. As for the grep, we did not consider each character's aggregated scores and results. Hence, the final plots were not as informative. The most instructive plots are the ones for the sentiment analysis. We observe that the Flair scores and extracted adjectives and adverbs using SpaCy provide a more precise analysis of each chapter. Unlike grep, according to which almost all chapters carry negative sentiment, the SpaCy output shows that all chapters have a fairly positive sentiment. It is understandable, as the story about Alice in Wonderland is more positive than negative. Such grep results can be justified due to the crude amount of sentiment words we chose for the prior analysis; 2/3 were biased towards negative connotation. 
+On the other hand, the NER plots show that the quantitative results for Alice are pretty similar between grep and SpeCy outputs. The frequency for Hatter, however, differs significantly between the two. 
+Taking into consideration the word clouds for grep and SpaCy outputs for each chapter, we can observe that the most frequent words (which have broader names in the charts) are very similar. However, the most prominent characters differ to some extent.
+Overall, the grep analysis is enough for a preliminary step such as quantitative analysis or specific words extraction and their counts. However, it is less representative for in-depth NER or sentiment study. 
+
+- Summarize key learnings, focusing on technical skills and literary insights.
+
+Answer: The key objectives that we learned during this project are: 
+	- the thought-through structure of the code (there were times when we had to refracture the code a couple of times to be more concise and less redundant);
+	- good training skills for working with nested dictionaries and JSON structure;
+	- data-analysis skills;
+	- analytical training regarding how to describe the code and how to proceed with some parts of the algorithms;
+
+- Briefly discuss major challenges and how you addressed them, particularly moving from basic grep searches to advanced NLP.
+
+Answer:
+The main challenges lay in the aliases extraction, where we had to implement a more sophisticated TF-IDF technique. The ECL1 course was beneficial when we implemented that part. Also, the choice of the SpaCy model makes a huge difference; the small model is less efficient than the large one. Other simple and technical parts, such as frequency calculation and character index extraction, were pretty straightforward. As for the time complexity, the NER by SpaCy took less time than grep; however, the sentiment analysis with Flair and SpaCy took the longest due to the Flair nuances of the model. 
+
+b) Analysis Insights and Real-World Applicability
+
+- Describe significant insights from the book analysis and how advanced NLP tools enhanced your initial grep findings.
+
+Answer: As we mentioned, advanced NLP tools such as SpaCy (in our case) made a huge difference compared to grep. The NER extraction is more precise and exhaustive with SpaCy; the Flair library allows us to obtain a more explainable sentiment score for each character and chapter based on the sentence sentiment. Although the sentiment grep analysis is faster than Flair, the quality of the two differs drastically when we look at the plots. Both analyses work well for the word cloud examination based on the word frequencies. The unexpected thing for us was the list with the main characters extracted by the SpaCy library. We would argue that, to some extent, the man-crafted list with the main characters works quite well, but if one is unfamiliar with the text, it might be a challenge to create a comprehensive list with the book's characters. 
+
+- Reflect on how these techniques and insights could apply in real-world contexts, like social media analysis or other literary works.
+
+The Matplotlib library can be applied to explore the distribution of sentiment scores in customer reviews, frequency distributions, or preliminary analysis of the length of different documents and the number of tokens per document. Plotly, as an interactive library, can give a more in-depth analysis of some text phenomena, such as adjective distributions, n-grams, and NER frequencies per category. Word clouds are helpful to visualize the most prominent words per some text snippet or in the whole text, which can be an excellent primary analysis of texts of different genres such as social media, novels, adverts, and others.
+
+Overall, the project was doable and somewhat challenging. We would say that perhaps next time would be good to mention whether we could use such libraries as sklearn to extract TF-IDF or provide more resources for SpaCy analysis connected with the aliases. Otherwise, the project was challenging (in a good way) and insightful. The most delightful part was visualization; we enjoyed learning new visualization tools and techniques that helped to understand the data better and more interactively. 
+
+You did a great job preparing this project!
+Marry Christmas & Happy New Year. May your coding experience be insightful and fun! :)
+
+
